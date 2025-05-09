@@ -1,21 +1,17 @@
 package com.example.hackathon.controller
 
-import org.springframework.stereotype.Controller
-import org.springframework.ui.Model
-import org.springframework.web.bind.annotation.GetMapping
 import com.example.hackathon.model.ImageInfo
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import org.springframework.core.io.ClassPathResource
-
+import org.springframework.stereotype.Controller
+import org.springframework.ui.Model
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.RequestMapping
 
 @Controller
-class HomeController {
-    @GetMapping("/")
-    fun home(model: Model): String {
-        model.addAttribute("message", "Hello, Kotlin + Spring Boot!")
-        return "home"
-    }
+@RequestMapping("/api/v1")  // API 버전을 명시적으로 지정
+class ImageController {
 
     @GetMapping("/images")
     fun showImages(model: Model): String {
@@ -30,4 +26,4 @@ class HomeController {
             "error"
         }
     }
-}
+} 
